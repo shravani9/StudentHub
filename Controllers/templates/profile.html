@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <title>Profile page</title>
+        <style>
+body{
+     background-image: url("/static/bg3.jpg");
+    background-size: cover;
+     border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto-thin", sans-serif;
+
+}
+.topnav {
+    background-color: rebeccapurple;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: mediumpurple;
+
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: mediumpurple;
+
+}
+
+
+
+.dropdown .dropbtn {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: mediumpurple;
+}
+.dropdown {
+    float: right;
+    margin-right: 42px;
+    overflow: hidden;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: mediumpurple;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.detailsbox{
+    margin-left:550px;
+    margin-right:550px;
+    margin-bottom:150px;
+    margin-top:150px;
+    background-color: mediumpurple;
+    color: white;
+}
+#assessment{
+       float:right;
+       margin-right: 50px;
+}
+#profile{
+          float: right;
+      margin-right: 30px;
+          border-bottom:3px solid darkorange;
+    width: 50px;
+    padding-bottom: 2px;
+}
+        .dropdown.dropbtn{
+                float:right;
+                right:0px;
+            }
+
+
+
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="topnav">
+        <a class="active" >S-HUB</a>
+        <div class="dropdown">
+    <button class="dropbtn">
+        {% for i in student %}
+        {{i[1]}}
+        {% endfor %}
+
+    </button>
+    <div class="dropdown-content">
+      <a href="/changepass">Change Password</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+        <a id="profile" href="/profile">Profile</a>
+        <a id="assessment" href="/assess">Assessments</a>
+        <br><br>
+        </div>
+         <div align="center" class ="detailsbox">
+             {%for i in student%}
+             <br>
+              <p style="text-align:center; font-size:20px;">id      :    {{i[0]}}</p> <br>
+             <p style="text-align:center; font-size:20px;">name     :    {{i[1]}}</p><br>
+
+             <p style="text-align:center; font-size:20px;">mail id  :    {{i[3]}}</p><br>
+             <p style="text-align:center; font-size:20px;">mobile   :    {{i[4]}}</p><br>
+             {% endfor %}
+
+        </div>
+
+    </body>
+</html>

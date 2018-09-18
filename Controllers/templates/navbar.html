@@ -1,0 +1,23 @@
+<html>
+<body>
+    <div class="topnav">
+        <a class="active" href="/">S-HUB</a>
+        <div class="dropdown">
+    <button class="dropbtn">
+        {% for i in student %}
+        {{i[1]}}
+        {% endfor %}
+     
+    </button>
+    <div class="dropdown-content">
+      <a href="/changepass">Change Password</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+        
+        <a id="profile" href="/profile">Profile</a>
+        <a id="assessment" href="/assess">Assessments</a>
+        <br><br>
+        </div>
+    </body>
+</html>

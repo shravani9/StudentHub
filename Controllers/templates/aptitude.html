@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+body{
+
+    background-size: cover;
+     border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto-thin", sans-serif;
+
+}
+.topnav {
+    background-color: rebeccapurple;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: mediumpurple;
+
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: mediumpurple;
+
+}
+.dropbtnclass {
+  top: 100px;
+}
+.dropdownclass .dropbtnclass {
+    top: 50px;
+    float: right;
+    right: 400px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdownclass:hover .dropbtnclass {
+    background-color: mediumpurple;
+}
+.dropdownclass {
+    float: right;
+    margin-right: 42px;
+    overflow: hidden;
+}
+
+.dropdown-contentclass {
+    display: none;
+    position: absolute;
+    background-color: mediumpurple;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.dropdown-contentclass a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-contentclass a:hover {
+    background-color: white;
+}
+
+.dropdownclass:hover .dropdown-contentclass {
+    display: block;
+}
+#assessment{
+    float: right;
+    margin-right: 50px;
+    border-bottom:3px solid darkorange;
+    width: 150px;
+    padding-bottom: 2px;
+}
+#profile{
+    float: right;
+    margin-right: 30px;
+
+}
+
+ .myform.button {
+  outline: 0;
+  background-color: mediumpurple;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #FFFFFF;
+  font-size: 20px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.testpaper{
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 25px;
+}
+.options{
+  font-size: 21px;
+}
+</style>
+</head>
+<body>
+      <div class="topnav">
+        <a class="active">S-HUB</a>
+        <div class="dropdownclass">
+    <button class="dropbtnclass">
+        {% for i in student %}
+        {{i[1]}}
+        {% endfor %}
+
+    </button>
+    <div class="dropdown-contentclass" style="  top: 50px">
+      <a href="/changepass">Change Password</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+        <a id="profile" href="/profile">Profile</a>
+        <a id="assessment" href="/assess">Assessments</a>
+        <br><br>
+         </div>
+            <br>
+                  <div align="center">
+                      <h2>assessment closes in <span id="timer">1:00 minute!</span></h2>
+                      </div>
+  <div class="jumbotron testpaper" >
+  <form name="myForm"  action="/submit_assessment/{{subid}}" method='post'>
+
+  {% for var in questions %}
+  {% autoescape false %}
+    <br/><h3>{{ var[1] }}</h3>
+      <div class="options">
+        Options:
+    <br/><input type="radio" name={{var[0]}} value={{var[2]}}> &nbsp{{ var[2] }}
+    <br/><input type="radio" name={{var[0]}} value={{var[3]}}> &nbsp{{ var[3] }}
+    <br/><input type="radio" name={{var[0]}} value={{var[4]}}> &nbsp{{ var[4] }}
+    <br/><input type="radio" name={{var[0]}} value={{var[5]}}> &nbsp{{ var[5] }}<br/>
+  </div>
+  {% endautoescape %}
+  {% endfor %}
+  <br>
+  <button id="submit" type="submit" class="btn btn-success" style="width: 130px; height:60px; font-size:18px; color:'white'"><b>Submit</b></button>
+  </form>
+</div>
+</body>
+<script>
+    window.onload = function(){
+       var min = 0;
+       var sec = 59;
+       var duration = 4;
+       var x=setInterval(function(){
+         document.getElementById("timer").innerHTML = min +" : " + sec ;
+         sec--;
+         duration--;
+         if(sec == 0 )
+         {
+
+             min--;
+             sec = 60;
+             if ( duration < 0)
+             {
+               clearInterval(x);
+               submit_form();
+               return
+            }
+        }
+      },1000);
+    }
+    function submit_form() {
+      alert("Test submitted");
+      document.getElementById('submit').click();
+      //window.location.href="/"
+    }
+
+</script>
+</html>

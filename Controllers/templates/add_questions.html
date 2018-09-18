@@ -1,0 +1,196 @@
+<html>
+<head>
+  <style>
+  /* #add{
+         float:right;
+      margin-right: 15px;
+  } */
+  #remove{
+      top: 5px;
+      margin-right: 21px;
+      float: right;
+
+  }
+  .dropdown.dropbtn{
+      float:right;
+       right:0px;
+  }
+  body{
+      background-image: url("/static/bg3.jpg");
+      background-size: cover;
+       border: 0;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto-thin", sans-serif;
+
+  }
+  .topnav {
+      background-color: rebeccapurple;
+      overflow: hidden;
+  }
+
+  /* Style the links inside the navigation bar */
+  .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 25px;
+      text-decoration: none;
+      font-size: 18px;
+  }
+
+  /* Change the color of links on hover */
+  .topnav a:hover {
+      background-color: mediumpurple;
+
+  }
+
+  /* Add a color to the active/current link */
+  .topnav a.active {
+      background-color: mediumpurple;
+
+  }
+
+
+
+  .dropdown .dropbtn {
+      font-size: 19px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+  }
+
+  .navbar a:hover, .dropdown:hover .dropbtn {
+      background-color: mediumpurple;
+  }
+  .dropdown {
+      float: right;
+      margin-right: 100px;
+      overflow: hidden;
+  }
+
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: mediumpurple;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+  }
+
+
+  .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+  }
+
+  .dropdown-content a:hover {
+      background-color: white;
+  }
+
+  .dropdown:hover .dropdown-content {
+      display: block;
+  }
+  .button{
+      background-color: mediumpurple;
+  }
+  .header{
+      margin-top: 110px;
+      text-align: center;
+
+  }
+  .form{
+      margin-top: 80px;
+        position: relative;
+    z-index: 1;
+    background-color: lightgray;
+
+    max-width: 300px;
+    margin: 0 auto 100px;
+    padding: 30px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    text-align: center;
+    top: 26px;
+  }
+  .form input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 20px;
+
+  }
+  .form button {
+    outline: 0;
+    background-color: mediumpurple;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #FFFFFF;
+    font-size: 20px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+  </style>
+    </head>
+<body>
+     <div class="topnav">
+        <a class="active">S-HUB</a>
+        <div class="dropdown">
+    <button class="dropbtn">
+    {{admin}}
+    </button>
+    <div class="dropdown-content">
+      <a href="/changepassadmin">Change Password</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+       <a id="remove" href="/AdminLanding">Home</a>
+
+
+         <br><br>
+        </div>
+    <div class="form">
+                          <div align="center">
+      <form action ='/add_questions' method = 'POST'>
+        <input  type="hidden" id="subid" name= "subid" value={{subid}}>
+
+     <input type="text" name="question" id="question" placeholder="Question"><br><br><br>
+     <input type="text" name="option1" id="option1" placeholder="Option 1"><br><br><br>
+     <input type="text" name="option2" id="option2" placeholder="Option 2"><br><br><br>
+     <input type="text" name="option3" id="option3" placeholder="Option 3"><br><br><br>
+     <input type="text" name="option4" id="option4" placeholder="Option 4"><br><br><br>
+     <input type="text" name="answer" id="answer" placeholder="answer"><br><br><br>
+     <button type="submit">ADD</button>
+     </form>
+    </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+      <style>
+    /* Form */
+.form {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255,0.1);
+  max-width: 300px;
+  margin: 0 auto 100px;
+  padding: 30px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  text-align: center;
+  top: 95px;
+}
+.form .thumbnail {
+  background-color: darkorange;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  padding: 50px 30px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form .thumbnail img {
+  display: block;
+  width: 100%;
+}
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 20px;
+
+}
+.form button {
+  outline: 0;
+  background-color: darkorange;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #FFFFFF;
+  font-size: 20px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form .message {
+  margin: 15px 0 0;
+  color:grey;
+  font-size: 12px;
+}
+.form .message a {
+  color:darkmagenta;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+/* <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> */
+/* END Form */
+/* Demo Purposes */
+body {
+
+  background-image: url("../static/login3.jpg");
+  background-size: cover;
+  opacity: 1;
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  font-family: "Roboto", sans-serif;
+  /*-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;*/
+}
+/*body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  background: rgba(255, 255, 255);
+  width: 100%;
+  height: 100%;
+}*/
+h1{
+    color: darkorchid;
+
+}
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: rebeccapurple;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: mediumpurple;
+
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: mediumpurple;
+
+}
+
+#login{
+    float: right;
+}
+#signup{
+    float: right;
+    border-bottom:3px solid darkorange;
+    width: 60px;
+    padding-bottom: 2px;
+}
+    </style>
+
+
+</head>
+
+<body>
+  <div class="topnav">
+        <a class="active" >S-HUB</a>
+
+        <a id="login" href="/login">LOG IN</a>
+        <a id="signup" href="/signup">SIGNUP</a>
+
+        </div>
+  <div class="form">
+    <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
+
+    <form class="signup-form" method="POST" action='/signup' onsubmit="return validateForm()">
+      <input type="text" id="username" name="username" placeholder="Name"   maxlength="30"/>
+        <input type="text" id="rollno" name="rollno" placeholder="Roll No" maxlength="10">
+      <input type="password" id="password" name="password" placeholder="Password"/>
+        <input type="text" id="email" name="mailid" placeholder="Email Address">
+
+      <input type="text" id="mobile" name="mobile" placeholder="Mobile no"  maxlength="10"/>
+        <button >Sign Up</button>
+
+    </form>
+  </div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
+      <script  src="../static/index.js"></script>
+
+      <script>
+      function validateForm(){
+
+                  var name=document.getElementById("username").value;
+                  var password=document.getElementById("password").value;
+                  var email=document.getElementById("email").value;
+                  var patternname=new RegExp(/^([A-Za-z ]){3,30}$/);
+                  var patternpassword= new RegExp(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/);
+                  var patternemail=new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
+                  var rollno=document.getElementById("rollno").value;
+                  var patternrollno=new RegExp(/^[a-zA-Z0-9]*$/)
+                  var mobile=document.getElementById("mobile").value;
+                  if(name==""||password==""||email==""||rollno==""||mobile==""){
+                    window.alert("enter all the details");
+                  }
+                  if(rollno.length<10){
+                    window.alert("Roll number must be 10 digits");
+                    return false;
+                  }
+
+                  if(!patternname.test(name)){
+                      window.alert("Name must be between 3-30 letters only");
+                      return false;
+                  }
+                  if(!patternrollno.test(rollno)){
+                      window.alert("Roll number must be 10 digit alphanumeric");
+                      return false;
+                  }
+                  if(!patternpassword.test(password)){
+                      window.alert("Password must 8 to 20 characters in length with one letter, one number, one special character and shouldn't start with special character");
+                      return false;
+                  }
+                  if(!patternemail.test(email)){
+                      window.alert("Enter a valid email id");
+                      return false;
+                  }
+
+              }
+
+      </script>
+
+
+      <script  src="../static/index.js"></script>
+
+      <script>
+             $( document ).ready(function() {
+           var regExp = /[0-9]+/;
+           $('#username').on('keydown keyup', function(e) {
+             var value = String.fromCharCode(e.which) || e.key;
+
+             // No letters
+             if (regExp.test(value)) {
+               e.preventDefault();
+                 window.alert("enter only alphabets ")
+               return false;
+             }
+           });
+         });
+
+         //  $(function() {
+         //   var regExp = /[a-z]/i;
+
+                  //     var value = String.fromCharCode(e.which) || e.key;
+         //
+         //     // No letters
+         //     if (regExp.test(value)) {
+         //       e.preventDefault();
+         //       return false;
+         //     }
+         //   });
+         // });
+         $( document ).ready(function() {
+          var regExp = /[a-z]/i;
+          $('#mobile').on('keydown keyup', function(e) {
+            var value = String.fromCharCode(e.which) || e.key;
+
+            // No letters
+            if (regExp.test(value)) {
+              e.preventDefault();
+              return false;
+            }
+          });
+        });
+
+                </script>
+
+
+
+
+</body>
+
+</html>
